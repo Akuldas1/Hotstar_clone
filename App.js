@@ -1,9 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import Nav from "./components/Nav/Nav"
+import Home from "./components/Home/Home"
+import Movies from "./components/Movies/Movies";
 export default function App() {
   return (
     <>
+     <Home/>
+     <Movies/>
      <Nav/>
     </>
   );

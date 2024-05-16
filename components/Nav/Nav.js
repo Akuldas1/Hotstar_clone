@@ -1,19 +1,18 @@
-import { SafeAreaView, View, Text, StyleSheet, Image, Button } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Button,
+} from "react-native";
 import Svg, { Path } from "react-native-svg";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 export default function Nav() {
   return (
     <>
-      <Image
-        style={styles.image}
-        source={{
-          uri: "https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/4221/1715673214221-i",
-        }}
-      />
-      <View>
-        <Button title="Watch now"/>
-      </View>
+    
       <View style={styles.container}>
         <View style={styles.nav}>
           <Svg
@@ -95,21 +94,12 @@ export default function Nav() {
 }
 
 const styles = StyleSheet.create({
-  image: {
-    flex: 0.7,
-    width: "auto",
-    height: 200,
-    paddingTop: 20,
-  },
-  button:{
-    width:10,
-    
-  }
   container: {
     flex: 1,
     flexDirection: "row",
     alignItems: "flex-end",
   },
+
   nav: {
     flex: 1,
     flexDirection: "column",
@@ -119,6 +109,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 8,
   },
+
   text: {
     color: "white",
     width: "fit-content",
