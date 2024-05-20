@@ -67,10 +67,11 @@
 
 
 import React from 'react';
-import { SafeAreaView, View, Text, StyleSheet, Image, Button, ScrollView } from "react-native";
+import { SafeAreaView, View, Text, StyleSheet, Image, Button, ScrollView, TouchableOpacity } from "react-native";
+import { FontAwesome } from '@expo/vector-icons';
 import Movies from "../components/movies";
-
-export default function Home() {
+import SubButton from '../components/Button';
+export default function Home({ navigation }) {
     return (
         <>
             <View style={styles.main}>
@@ -78,10 +79,11 @@ export default function Home() {
                     <Image
                         style={styles.logo}
                         source={{
-                            uri: "https://img.hotstar.com/image/upload/v1656431456/web-images/logo-d-plus.svg ",
+                            uri: "",
                         }}
                     />
-                    <Button title='subscribe' className="bg-red-400 text-black" />
+                    {/* <Button title='subscribe' className="bg-red-400 text-black"/> */}
+                    <SubButton />
                 </View>
                 <View>
                     <Image
@@ -90,16 +92,30 @@ export default function Home() {
                             uri: "https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/9660/1707127799660-i",
                         }}
                     />
-                    <View style={styles.home}>
+                    <View style={styles.home} >
                         <View style={styles.content}>
-                            <Button style={styles.button} title="Watch now" />
-                            <Button style={styles.button} title="+" />
+
+                            <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap:8, padding:10 }} className="bg-slate-800/30">
+                                <FontAwesome name="play" size={11} color="white" />
+                                <Text className="text-white">Watch now</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap:4, padding:10 }} className="bg-slate-800/30">
+                                <Text className="text-white">+</Text>
+                            </TouchableOpacity>
+
+                            {/* <Button style={styles.button} title="Watch now" />
+                            <Button style={styles.button} title="+" /> */}
                         </View>
                     </View>
                     <View>
                         <Text className="text-white">Latest Releases</Text>
-                        <Movies/>
+                        <Movies />
                     </View>
+                    {/* <Button title='Detailed' className="bg-red-400 text-black"  onPress={() => navigation.navigate('MovieDetail',{
+                         Movie: 1,
+                         MovieName: 'Movie',
+                    })}/> */}
                 </View>
             </View>
         </>
@@ -107,8 +123,9 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-    main:{
-        backgroundColor:"black"
+    main: {
+        backgroundColor: "black",
+        height: "100%",
     },
     top: {
         position: "absolute",

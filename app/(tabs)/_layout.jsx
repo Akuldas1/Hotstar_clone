@@ -5,7 +5,7 @@ import { Slot, Stack, Tabs } from 'expo-router';
 export default function Root_layout() {
   return (
   <Tabs>
-    <Tabs.Screen name="/Home"/>
+    <Tabs.Screen name="Home"/>
   </Tabs>
   );
 }

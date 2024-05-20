@@ -1,103 +1,33 @@
-// import React, { useState, useEffect } from 'react';
-// import { View, StyleSheet, Image, Text } from "react-native";
-// import { fetchMovies} from '../api/fetchMovies'; // Assuming you have an API function to fetch movie details
+// import { StyleSheet, Text, View, Button } from 'react-native'
+// import React from 'react'
 
-// export default function MovieDetail({ route }) {
-//     const { movieId } = route.params;
-//     const [movieDetails, setMovieDetails] = useState([]);
-
-//     useEffect(() => {
-//         const fetchMovie = async () => {
-//             const details = await fetchMovies(movieId);
-//             setMovieDetails(details);
-//         };
-//         fetchMovie();
-//     }, [movieId]);
-
-//     // if (!movieDetails) {
-//     //     return (
-//     //         <View style={styles.loadingContainer}>
-//     //             <Text>Loading...</Text>
-//     //         </View>
-//     //     );
-//     // }
-
-//     return (
-//         <View style={styles.container}>
-//             <Image
-//                 style={styles.image}
-//                 source={{ uri: movieDetails.posterURL }}
-//             />
-//             <View style={styles.detailsContainer}>
-//                 <Text style={styles.title} className="text-red-600">{movieDetails.title}</Text>
-//             </View>
-//         </View>
-//     );
+// const MovieDetail = ({ navigation }) => {
+//   return (
+//     <View>
+//       <Text>MovieDetail</Text>
+//       <Button title="Go back" onPress={() => navigation.goBack()} />
+//     </View>
+//   )
 // }
 
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         padding: 20,
-//     },
-//     image: {
-//         width: 200,
-//         height: 300,
-//         marginBottom: 20,
-//         // backgroundColor:"red",
-//         zIndex:1,
-//     },
-//     detailsContainer: {
-//         alignItems: 'center',
-//     },
-//     title: {
-//         fontSize: 24,
-//         fontWeight: 'bold',
-//         marginBottom: 10,
-//         backgroundColor:"black"
-//     },
-// });
+// export default MovieDetail
 
+// const styles = StyleSheet.create({})
 
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Image, Text } from "react-native";
-import { fetchMovieDetails } from '../api/fetchMovieDetails';
+import React from 'react';
+import { View, StyleSheet, Image, Text, Button } from 'react-native';
 
-export default function MovieDetail({ route }) {
-    const { movieId } = route.params;
-    const [movieDetails, setMovieDetails] = useState(null);
-
-    useEffect(() => {
-        const fetchMovie = async () => {
-            try {
-                const details = await fetchMovieDetails(movieId);
-                setMovieDetails(details);
-            } catch (error) {
-                console.error('Error fetching movie details:', error);
-            }
-        };
-        fetchMovie();
-    }, [movieId]);
-
-    if (!movieDetails) {
-        return (
-            <View style={styles.loadingContainer}>
-                <Text>Loading...</Text>
-            </View>
-        );
-    }
+export default function MovieDetail({ route, navigation }) {
+    const { movie } = route.params; // Get movie data from route params
 
     return (
         <View style={styles.container}>
             <Image
                 style={styles.image}
-                source={{ uri: movieDetails.posterURL }}
+                source={{ uri: movie.posterURL }}
             />
-            <View style={styles.detailsContainer}>
-                <Text style={styles.title}>{movieDetails.title}</Text>
-            </View>
+            <Text style={styles.title}>{movie.title}</Text>
+            <Button title="Go back" onPress={() => navigation.goBack()} />
         </View>
     );
 }
@@ -107,19 +37,15 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20,
     },
     image: {
-        width: 200,
-        height: 300,
-        marginBottom: 20,
-    },
-    detailsContainer: {
-        alignItems: 'center',
+        width: 300,
+        height: 400,
+        resizeMode: 'cover',
     },
     title: {
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 10,
+        marginTop: 10,
     },
 });
