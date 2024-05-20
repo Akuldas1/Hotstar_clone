@@ -62,6 +62,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet } from 'react-native';
 import Home from './screens/Home';
 import MovieDetail from './screens/MovieDetail';
+import Search from './screens/Search';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -71,6 +72,7 @@ export default function App() {
     <NavigationContainer independent={true}>
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="Search" component={Search} />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -85,13 +87,13 @@ const HomeStack = () => {
   );
 };
 
-const MovieDetailStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="MovieDetail" component={MovieDetail} options={{ headerShown: false }} />
-    </Stack.Navigator>
-  );
-};
+// const MovieDetailStack = () => {
+//   return (
+//     <Stack.Navigator>
+//       <Stack.Screen name="MovieDetail" component={MovieDetail} options={{ headerShown: false }} />
+//     </Stack.Navigator>
+//   );
+// };
 
 const styles = StyleSheet.create({
   container: {
