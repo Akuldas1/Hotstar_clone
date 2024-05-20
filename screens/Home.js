@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
 
   image:{
-    flex: 4,
+    flex: 1,
   },
 
   button: {
