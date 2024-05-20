@@ -42,7 +42,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import {ScrollView, View, StyleSheet, Image, Text } from "react-native";
+import { ScrollView, View, StyleSheet, Image, Text } from "react-native";
 import { fetchMovies } from '../api/fetchMovies';
 
 export default function Movies() {
@@ -58,15 +58,19 @@ export default function Movies() {
     }, []);
 
     return (
+
         <View style={styles.container}>
-            {movies.map((data) => (
-                <View key={data.id} style={styles.movieItem}>
-                    <Image
-                        style={styles.image}
-                        source={{ uri: data.posterURL }}
-                    />
-                </View>
-            ))}
+
+            <ScrollView horizontal={true}>
+                {movies.map((data) => (
+                    <View key={data.id} style={styles.movieItem}>
+                        <Image
+                            style={styles.image}
+                            source={{ uri: data.posterURL }}
+                        />
+                    </View>
+                ))}
+            </ScrollView>
         </View>
     );
 }
@@ -84,5 +88,6 @@ const styles = StyleSheet.create({
         height: 200,
         resizeMode: 'cover',
     },
-  
+
 });
+
