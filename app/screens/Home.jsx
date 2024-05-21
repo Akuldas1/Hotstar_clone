@@ -67,14 +67,17 @@
 
 
 import React from 'react';
-import { SafeAreaView, View, Text, StyleSheet, Image, Button, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, Button, ScrollView, TouchableOpacity } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
+import Entypo from '@expo/vector-icons/Entypo';
 import Movies from "../components/movies";
 import SubButton from '../components/Button';
+import Disney from '../components/disney';
 export default function Home({ navigation }) {
     return (
         <>
-            <View style={styles.main}>
+
+            <ScrollView style={styles.main}>
                 <View style={styles.top}>
                     <Image
                         style={styles.logo}
@@ -86,24 +89,37 @@ export default function Home({ navigation }) {
                     <SubButton />
                 </View>
                 <View>
+                    {/* <Image
+                        style={styles.image}
+                        source={{
+                            uri: "https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/9660/1707127799660-i",
+                        }}
+                    /> */}
+
                     <Image
                         style={styles.image}
                         source={{
                             uri: "https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/9660/1707127799660-i",
                         }}
                     />
-                    <View style={styles.home} >
-                        <View style={styles.content}>
 
-                            <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap:8, padding:10 }} className="bg-slate-800/30">
+                    <View style={styles.home} >
+
+                        <Text className="text-white">
+                            Hindi <Entypo name="dot-single" size={16} color="white" />
+                            Crime  <Entypo name="dot-single" size={16} color="white" />
+                            Thriller  <Entypo name="dot-single" size={16} color="white" />
+                            Intense
+                        </Text>
+                        <View style={styles.content}>
+                            <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap: 8, padding: 10 }} className="bg-slate-800/30">
                                 <FontAwesome name="play" size={11} color="white" />
                                 <Text className="text-white">Watch now</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap:4, padding:10 }} className="bg-slate-800/30">
+                            <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap: 4, padding: 10 }} className="bg-slate-800/30">
                                 <Text className="text-white">+</Text>
                             </TouchableOpacity>
-
                             {/* <Button style={styles.button} title="Watch now" />
                             <Button style={styles.button} title="+" /> */}
                         </View>
@@ -111,13 +127,15 @@ export default function Home({ navigation }) {
                     <View>
                         <Text className="text-white">Latest Releases</Text>
                         <Movies />
+                        <Disney/>
                     </View>
                     {/* <Button title='Detailed' className="bg-red-400 text-black"  onPress={() => navigation.navigate('MovieDetail',{
                          Movie: 1,
                          MovieName: 'Movie',
                     })}/> */}
                 </View>
-            </View>
+            </ScrollView>
+
         </>
     );
 }
@@ -148,7 +166,9 @@ const styles = StyleSheet.create({
     },
     home: {
         flexDirection: "column",
-        justifyContent: "flex-start",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 10,
         marginVertical: 10,
     },
     content: {
