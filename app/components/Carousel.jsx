@@ -8,7 +8,7 @@ const Carousel = () => {
     <Swiper style={styles.wrapper}  autoplay={true} paginationStyle={styles.pagination}>
       <View style={styles.slide}>
         <Image source={{uri:'https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/1791/1611791-i-3b22c4f693bd'}} style={styles.image} />
-        <Text style={{zIndex:1,backgroundColor:"red"}}>vikram</Text>
+        <Text style={{zIndex:1,backgroundColor:"red", position:'relative', bottom:20}}>vikram</Text>
       </View>
       <View style={styles.slide}>
         <Image source={{uri:'https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/3779/1553779-i-ed41b6853d74'}} style={styles.image} />
