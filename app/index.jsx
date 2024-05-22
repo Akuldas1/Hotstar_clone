@@ -21,9 +21,6 @@
 //   },
 // });
 
-// App.js
-
-// App.js
 
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -63,34 +60,47 @@ import { StyleSheet, View } from 'react-native';
 import Home from './screens/Home';
 import MovieDetail from './screens/MovieDetail';
 import Search from './screens/Search';
-import { AntDesign, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons'; // Import the icons you want to use
+import Downloads from './screens/Downloads';
+import { AntDesign, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons'; 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
+
+import * as Font from 'expo-font';
+import MySpace from './screens/MySpace';
+
+async function loadFonts() {
+  await Font.loadAsync({
+    'Inter-Bold': require('../assets/fonts/Inter-Bold.ttf'),
+    'Inter-Regular': require('../assets/fonts/Inter-Regular.ttf'),
+  });
+}
+
+loadFonts();
+
 
 export default function App() {
   return (
     <>
-   
-    <NavigationContainer independent={true}>
-      <Tab.Navigator  tabBarOptions={{
-          activeTintColor: 'red', // Change the color for active tab icons
-          inactiveTintColor: 'blue', // Change the color for inactive tab icons
-       }}
-       
-       >
-        <Tab.Screen name="Home" component={HomeStack}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <Entypo name="home" size={size} color={color} />
-            ),
-          }} />
-        <Tab.Screen name="Search" component={Search} />
-        <Tab.Screen name="News & Hot" component={Search} />
-        <Tab.Screen name="Downloads" component={Search} />
-        <Tab.Screen name="My Space" component={Search} />
-      </Tab.Navigator>
-    </NavigationContainer>
- 
+
+      <NavigationContainer independent={true}>
+        <Tab.Navigator tabBarOptions={{
+          activeTintColor: 'red',
+          inactiveTintColor: 'blue',
+        }}
+        >
+          <Tab.Screen name="Home" component={HomeStack}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Entypo name="home" size={size} color={color} />
+              ),
+            }} />
+          <Tab.Screen name="Search" component={Search} />
+          <Tab.Screen name="News & Hot" component={Search} />
+          <Tab.Screen name="Downloads" component={Downloads} />
+          <Tab.Screen name="MySpace" component={MySpace} />
+        </Tab.Navigator>
+      </NavigationContainer>
+
     </>
   );
 }

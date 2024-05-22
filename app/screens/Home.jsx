@@ -102,10 +102,12 @@ export default function Home({ navigation }) {
                             uri: "https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/9660/1707127799660-i",
                         }}
                     />
+                  
+
 
                     <View style={styles.home} >
 
-                        <Text className="text-white">
+                        <Text className="text-white"  style={{fontFamily:"Inter-bold"}}>
                             Hindi <Entypo name="dot-single" size={16} color="white" />
                             Crime  <Entypo name="dot-single" size={16} color="white" />
                             Thriller  <Entypo name="dot-single" size={16} color="white" />
@@ -114,7 +116,7 @@ export default function Home({ navigation }) {
                         <View style={styles.content}>
                             <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap: 8, padding: 10 }} className="bg-slate-800/30">
                                 <FontAwesome name="play" size={11} color="white" />
-                                <Text className="text-white">Watch now</Text>
+                                <Text className="text-white"  style={{fontFamily:"Inter-Regular"}}>Watch now</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap: 4, padding: 10 }} className="bg-slate-800/30">
@@ -125,7 +127,7 @@ export default function Home({ navigation }) {
                         </View>
                     </View>
                     <View>
-                        <Text className="text-white">Latest Releases</Text>
+                        <Text className="text-white" style={{fontFamily:"Inter-Bold", fontSize:20, paddingLeft:10}}>Latest Releases</Text>
                         <Movies />
                         <Disney/>
                     </View>

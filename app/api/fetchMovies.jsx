@@ -1,6 +1,5 @@
 
 import axios from "axios";
-
 export const fetchMovies = async (genre) => {
   try {
     const resp = await axios.get(`https://api.sampleapis.com/movies/${genre}`);

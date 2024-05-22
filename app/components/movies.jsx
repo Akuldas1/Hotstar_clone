@@ -109,7 +109,7 @@ export default function Movies() {
     }, []);
 
     const navigateToMovieDetail = (movie) => {
-        navigation.navigate('MovieDetail', { movie }); // Navigate to MovieDetail screen with movie data
+        navigation.navigate('MovieDetail', { movie }); 
     };
 
     return (

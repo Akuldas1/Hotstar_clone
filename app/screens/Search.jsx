@@ -1,14 +1,40 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
+import Movies from '../components/movies';
 
 const Search = () => {
+  // const [text, setText] = useState('');
+
+  // const onChangeText = (inputText) => {
+  //   setText(inputText);
+  // };
+
   return (
-    <View>
-      <Text>Search</Text>
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        // onChangeText={onChangeText}
+        // value={text}
+        placeholder="Movies, shows and more"
+      />
     </View>
-  )
-}
+  );
+};
 
-export default Search
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding:10,
+    backgroundColor:"black"
+  },
+  input: {
+    height: 40,
+    width: "full",
+    backgroundColor:"white",
+    borderRadius:10,
+    borderWidth: 1,
+    paddingHorizontal: 10,
+  },
+});
 
-const styles = StyleSheet.create({})
+export default Search;
