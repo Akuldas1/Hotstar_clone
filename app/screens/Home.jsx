@@ -73,6 +73,7 @@ import Entypo from '@expo/vector-icons/Entypo';
 import Movies from "../components/movies";
 import SubButton from '../components/Button';
 import Disney from '../components/disney';
+import Carousel from '../components/Carousel';
 export default function Home({ navigation }) {
     return (
         <>
@@ -96,14 +97,14 @@ export default function Home({ navigation }) {
                         }}
                     /> */}
 
-                    <Image
+                    {/* <Image
                         style={styles.image}
                         source={{
                             uri: "https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/9660/1707127799660-i",
                         }}
                     />
-                  
-
+                   */}
+                       <Carousel/>
 
                     <View style={styles.home} >
 
