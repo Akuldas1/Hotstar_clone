@@ -1,108 +1,82 @@
-// import React from 'react'
-// import {
-//     View,
-//     StyleSheet,
-//     Image,
-// } from "react-native";
-// import { fetchMovies } from '../api/fetchMovies'
-// import { useState, useEffect } from 'react'
-
-
-// export default function Movies() {
-//     const [movies, setMovies] = useState([])
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             const movies = fetchMovies("horror")
-//             setMovies(movies)
-//         }
-//         fetchData();
-//     })
-
-//     return (
-//         <>
-//             <View>
-//                 {
-//                     movies.map((data) => {
-//                         <View key={data.id} style={styles.image}>
-//                         <Image source={data.posterURL}/>
-//                         </View>
-//                     })
-//                 }
-//             </View>
-//         </>
-//     )
-// }
-
-// const styles= StyleSheet.create({
-//     image:{
-//         flex:0.5
-//     }
-// })
-
-
 // import React, { useState, useEffect } from 'react';
-// import { ScrollView, View, StyleSheet, Image, Text } from "react-native";
+// import { ScrollView, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+// import { useNavigation } from '@react-navigation/native';
 // import { fetchMovies } from '../api/fetchMovies';
 
-// export default function Movies() {
+// export default function Movies2() {
 //     const [movies, setMovies] = useState([]);
+//     const navigation = useNavigation();
 
 //     useEffect(() => {
 //         const fetchData = async () => {
-//             const moviesData = await fetchMovies("horror");
-//             console.log(moviesData); // Log fetched data
+//             const moviesData = await fetchMovies("comedy");
 //             setMovies(moviesData);
 //         };
 //         fetchData();
 //     }, []);
 
+//     const navigateToMovieDetail = (movie) => {
+//         navigation.navigate('MovieDetail', { movie }); 
+//     };
+
 //     return (
-
 //         <View style={styles.container}>
-
-//             <ScrollView horizontal={true}>
-//                 {movies.map((data) => (
-//                     <View key={data.id} style={styles.movieItem}>
+//                 {movies.map((data, index) => (
+//                     <TouchableOpacity key={data.id} style={[styles.movieItem, { height: index === 0 || index === 3 ? 200 : 300 }]}>
 //                         <Image
-//                             style={styles.image}
+//                             style={[styles.image, { width: '100%', height: '100%' }]}
 //                             source={{ uri: data.posterURL }}
+//                             onPress={() => navigateToMovieDetail(data)}
 //                         />
-//                     </View>
+//                     </TouchableOpacity>
 //                 ))}
-//             </ScrollView>
 //         </View>
 //     );
 // }
 
+// // const styles = StyleSheet.create({
+// //     container: {
+// //         flexDirection: 'row',
+        
+// //     },
+// //     movieItem: {
+// //         margin: 10,
+// //         width: 150, // Default width
+// //     },
+// //     image: {
+// //         resizeMode: 'cover',
+// //     },
+// // });
+
 // const styles = StyleSheet.create({
 //     container: {
 //         flexDirection: 'row',
+//         flexWrap: 'wrap',
+//         justifyContent: 'space-around',
 //     },
 //     movieItem: {
-//         margin: 10,
+     
 //         width: 150,
 //     },
 //     image: {
 //         width: '100%',
 //         height: 200,
 //         resizeMode: 'cover',
-//     },
-
+//     }
 // });
 
 import React, { useState, useEffect } from 'react';
 import { ScrollView, View, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
+import { useNavigation } from '@react-navigation/native'; 
 import { fetchMovies } from '../api/fetchMovies';
 
-export default function Movies() {
+export default function Moviess() {
     const [movies, setMovies] = useState([]);
-    const navigation = useNavigation(); // Get navigation object
+    const navigation = useNavigation(); 
 
     useEffect(() => {
         const fetchData = async () => {
-            const moviesData = await fetchMovies("horror");
+            const moviesData = await fetchMovies("comedy");
             setMovies(moviesData);
         };
         fetchData();
@@ -114,7 +88,7 @@ export default function Movies() {
 
     return (
         <View style={styles.container}>
-            <ScrollView horizontal={true}>
+         
                 {movies.map((data) => (
                     <TouchableOpacity key={data.id} style={styles.movieItem} onPress={() => navigateToMovieDetail(data)}>
                         <Image
@@ -123,7 +97,7 @@ export default function Movies() {
                         />
                     </TouchableOpacity>
                 ))}
-            </ScrollView>
+           
         </View>
     );
 }
@@ -131,15 +105,17 @@ export default function Movies() {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
     },
     movieItem: {
-        margin: 10,
+     
         width: 150,
     },
     image: {
         width: '100%',
         height: 200,
         resizeMode: 'cover',
-    },
+    }
 });
-
+ 

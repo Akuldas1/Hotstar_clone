@@ -74,6 +74,7 @@ import Movies from "../components/movies";
 import SubButton from '../components/Button';
 import Disney from '../components/disney';
 import Carousel from '../components/Carousel';
+import Movies2 from '../components/movies2';
 export default function Home({ navigation }) {
     return (
         <>
