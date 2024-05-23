@@ -82,24 +82,29 @@ export default function MovieDetail({ route, navigation }) {
           </Text>
         </View>
 
-        <View className="flex justify-center">
-          <View className="flex flex-row gap-10 mt-0.5">
+        <View className="flex flex-row gap-10  mt-2">
+          <View className="flex flex-col items-center">
             <AntDesign name="plus" size={24} color="white" />
-            <Fontisto name="share-a" size={20} color="white" />
+            <Text className="text-gray-300">Watchlist</Text>
+          </View>
+          <View className="flex flex-col items-center">
+            <Fontisto name="share-a" size={24} color="white" />
+            <Text className="text-gray-300">Share</Text>
+          </View>
+          <View className="flex flex-col items-center">
             <Octicons name="download" size={24} color="white" />
+            <Text className="text-gray-300">Download</Text>
+          </View>
+          <View className="flex flex-col items-center">
             <MaterialCommunityIcons
               name="cards-heart-outline"
               size={24}
               color="white"
             />
+            <Text className="text-white">Rate</Text>
           </View>
-          {/* <Text className="text-white">
-                    Watchlist
-                    Share
-                    Download
-                    Rate
-                </Text> */}
         </View>
+
         <View className="mt-5">
           <Text
             className="text-white"
@@ -125,6 +130,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: "black",
+    gap: 20,
   },
   image: {
     width: "100%",

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import Movies from '../components/movies';
-import Movies2 from '../components/movies2';
+// import Movies2 from '../components/movies2';
 
 const Search = () => {
   // const [text, setText] = useState('');
@@ -19,7 +19,7 @@ const Search = () => {
         placeholder="Movies, shows and more"
       />
       <View>
-      <Movies2/>
+      {/* <Movies2/> */}
       </View>
     </View>
   );

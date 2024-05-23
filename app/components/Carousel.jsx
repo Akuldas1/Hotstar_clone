@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import Swiper from "react-native-swiper";
-import { LinearGradient } from "expo-linear-gradient"; // Import LinearGradient
+import { LinearGradient } from "expo-linear-gradient"; 
 import Entypo from "@expo/vector-icons/Entypo";
 
 // showsButtons={true}
