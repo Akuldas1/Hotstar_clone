@@ -81,7 +81,6 @@ import Disney from "../components/disney";
 import Carousel from "../components/Carousel";
 import Languages from "../components/Languages";
 import Genres from "../components/genres";
-import Carousel2 from "../components/Carousel2";
 
 export default function Home({ navigation }) {
   return (
@@ -91,7 +90,7 @@ export default function Home({ navigation }) {
           <Image
             style={styles.logo}
             source={{
-              uri: "",
+              uri: "https://img.hotstar.com/image/upload/v1656431456/web-images/logo-d-plus.svg",
             }}
           />
           <SubButton />
@@ -203,7 +202,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 50,
-    objectFit: "contain",
+    resizeMode: "contain",
+    zIndex:10
   },
   image: {
     height: 200,
