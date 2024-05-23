@@ -131,6 +131,7 @@ import Search from './screens/Search';
 import Downloads from './screens/Downloads'
 import Myspace from './screens/MySpace'
 import { AntDesign, Entypo, FontAwesome, MaterialIcons, Octicons } from '@expo/vector-icons'; // Import the icons you want to use
+import NewsHot from './screens/NewsHot';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -173,7 +174,7 @@ export default function App() {
         />
         <Tab.Screen
           name="News & Hot"
-          component={Search}
+          component={NewsHot}
           options={{
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons name="whatshot" size={size} color={color} />

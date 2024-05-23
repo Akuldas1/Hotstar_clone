@@ -1,9 +1,9 @@
 // import React, { useState, useEffect } from 'react';
-// import { ScrollView, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+// import { ScrollView, View, StyleSheet, Image, TouchableOpacity, Dimensions } from "react-native";
 // import { useNavigation } from '@react-navigation/native';
 // import { fetchMovies } from '../api/fetchMovies';
 
-// export default function Movies2() {
+// export default function Movies() {
 //     const [movies, setMovies] = useState([]);
 //     const navigation = useNavigation();
 
@@ -16,63 +16,61 @@
 //     }, []);
 
 //     const navigateToMovieDetail = (movie) => {
-//         navigation.navigate('MovieDetail', { movie }); 
+//         navigation.navigate('MovieDetail', { movie });
 //     };
 
+//     const removeImage = (id) => {
+//         setMovies(prevMovies => prevMovies.filter(movie => movie.id !== id));
+//     };
+
+//     const { width } = Dimensions.get('window');
+//     const imageWidth = width / 3 - 20; // Adjusting the image width for 3 columns with some spacing
+
 //     return (
-//         <View style={styles.container}>
-//                 {movies.map((data, index) => (
-//                     <TouchableOpacity key={data.id} style={[styles.movieItem, { height: index === 0 || index === 3 ? 200 : 300 }]}>
-//                         <Image
-//                             style={[styles.image, { width: '100%', height: '100%' }]}
-//                             source={{ uri: data.posterURL }}
-//                             onPress={() => navigateToMovieDetail(data)}
-//                         />
-//                     </TouchableOpacity>
-//                 ))}
-//         </View>
+//         <ScrollView contentContainerStyle={styles.container}>
+//             {movies.map((data) => (
+//                 <TouchableOpacity
+//                     key={data.id}
+//                     style={[styles.movieItem, { width: imageWidth, height: imageWidth * 1.5 }]}
+//                     onPress={() => navigateToMovieDetail(data)}
+//                 >
+//                     <Image
+//                         style={styles.image}
+//                         source={{ uri: data.posterURL }}
+//                         onError={() => removeImage(data.id)}
+//                     />
+//                 </TouchableOpacity>
+//             ))}
+//         </ScrollView>
 //     );
 // }
-
-// // const styles = StyleSheet.create({
-// //     container: {
-// //         flexDirection: 'row',
-        
-// //     },
-// //     movieItem: {
-// //         margin: 10,
-// //         width: 150, // Default width
-// //     },
-// //     image: {
-// //         resizeMode: 'cover',
-// //     },
-// // });
 
 // const styles = StyleSheet.create({
 //     container: {
 //         flexDirection: 'row',
 //         flexWrap: 'wrap',
-//         justifyContent: 'space-around',
+//         justifyContent: 'space-between',
+//         padding: 10,
 //     },
 //     movieItem: {
-     
-//         width: 150,
+//         marginBottom: 20,
 //     },
 //     image: {
 //         width: '100%',
-//         height: 200,
+//         height: '100%',
+//         borderRadius: 10,
 //         resizeMode: 'cover',
 //     }
 // });
 
 // import React, { useState, useEffect } from 'react';
-// import { ScrollView, View, StyleSheet, Image, TouchableOpacity } from "react-native";
-// import { useNavigation } from '@react-navigation/native'; 
+// import { ScrollView, View, StyleSheet, Image, TouchableOpacity, Dimensions } from "react-native";
+// import { useNavigation } from '@react-navigation/native';
 // import { fetchMovies } from '../api/fetchMovies';
 
-// export default function Moviess() {
+// export default function Movies() {
 //     const [movies, setMovies] = useState([]);
-//     const navigation = useNavigation(); 
+//     const navigation = useNavigation();
 
 //     useEffect(() => {
 //         const fetchData = async () => {
@@ -83,46 +81,128 @@
 //     }, []);
 
 //     const navigateToMovieDetail = (movie) => {
-//         navigation.navigate('MovieDetail', { movie }); 
+//         navigation.navigate('MovieDetail', { movie });
 //     };
-
 
 //     const removeImage = (id) => {
 //         setMovies(prevMovies => prevMovies.filter(movie => movie.id !== id));
 //     };
 
+//     const { width } = Dimensions.get('window');
+//     const imageWidth = width / 3 - 20; // Adjusting the image width for 3 columns with some spacing
+//     const largeImageWidth = width - 40; // Full width for larger images
+//     const largeImageHeight = 200; // Height for larger images
 
 //     return (
-//         <View style={styles.container}>
-         
-//                 {movies.map((data, index) => (
-//                     <TouchableOpacity key={data.id} style={[styles.movieItem, { width: index === 0 || index === 6 ? 300 : 100 },{ height: index === 0 || index === 4 ? 100 : 300 }]} onPress={() => navigateToMovieDetail(data)}>
-//                         <Image
-//                             style={styles.image}
-//                             source={{ uri: data.posterURL }}
-//                             onError={() => removeImage(data.id)}
-//                         />
-//                     </TouchableOpacity>
-//                 ))}
-           
-//         </View>
+//         <ScrollView contentContainerStyle={styles.container}>
+//             {movies.map((data, index) => (
+//                 <TouchableOpacity
+//                     key={data.id}
+//                     style={[
+//                         styles.movieItem,
+//                         index === 0 || index === 4
+//                             ? { width: largeImageWidth, height: largeImageHeight }
+//                             : { width: imageWidth, height: imageWidth * 1.5 }
+//                     ]}
+//                     onPress={() => navigateToMovieDetail(data)}
+//                 >
+//                     <Image
+//                         style={styles.image}
+//                         source={{ uri: data.posterURL }}
+//                         onError={() => removeImage(data.id)}
+//                     />
+//                 </TouchableOpacity>
+//             ))}
+//         </ScrollView>
 //     );
 // }
 
 // const styles = StyleSheet.create({
 //     container: {
-//         flex:1,
 //         flexDirection: 'row',
 //         flexWrap: 'wrap',
-//         // justifyContent: 'space-around',
+//         justifyContent: 'space-between',
+//         padding: 10,
 //     },
 //     movieItem: {
-//         width: 100,
+//         marginBottom: 20,
 //     },
 //     image: {
 //         width: '100%',
-//         height: 300,
-
+//         height: '100%',
+//         borderRadius: 10,
+//         resizeMode: 'cover',
 //     }
 // });
- 
+
+import React, { useState, useEffect } from 'react';
+import { ScrollView, View, StyleSheet, Image, TouchableOpacity, Dimensions } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import { fetchMovies } from '../api/fetchMovies';
+
+export default function Movies() {
+    const [movies, setMovies] = useState([]);
+    const navigation = useNavigation();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const moviesData = await fetchMovies("comedy");
+            setMovies(moviesData);
+        };
+        fetchData();
+    }, []);
+
+    const navigateToMovieDetail = (movie) => {
+        navigation.navigate('MovieDetail', { movie });
+    };
+
+    const removeImage = (id) => {
+        setMovies(prevMovies => prevMovies.filter(movie => movie.id !== id));
+    };
+
+    const { width } = Dimensions.get('window');
+    const imageWidth = width / 3.34; // Adjusting the image width for 3 columns with no spacing
+    const largeImageWidth = width; // Full width for larger images
+    const largeImageHeight = 200; // Height for larger images
+
+    return (
+        <ScrollView contentContainerStyle={styles.container}>
+            {movies.slice(0,8).map((data, index) => (
+                <TouchableOpacity
+                    key={data.id}
+                    style={[
+                        styles.movieItem,
+                        index === 0 || index === 4
+                            ? { width: largeImageWidth, height: largeImageHeight }
+                            : { width: imageWidth, height: imageWidth * 1.5 }
+                    ]}
+                    onPress={() => navigateToMovieDetail(data)}
+                >
+                    <Image
+                        style={styles.image}
+                        source={{ uri: data.posterURL }}
+                        onError={() => removeImage(data.id)}
+                    />
+                </TouchableOpacity>
+            ))}
+        </ScrollView>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        gap:1
+    },
+    movieItem: {
+        margin: 3,
+        padding: 0,
+    },
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'cover',
+        borderRadius: 5
+    }
+});

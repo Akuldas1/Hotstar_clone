@@ -1,71 +1,64 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import React, { useState, useEffect } from 'react';
+import { ScrollView, View, StyleSheet, Image, TouchableOpacity, Dimensions, Button } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import { fetchMovies } from '../api/fetchMovies';
 
-const MySpace = () => {
-  return (
-    <>
-      <LinearGradient
-        colors={['#4e6cef', 'black', 'black', 'black']}
-        locations={[0, 0.25, 0.45, 1]}
-        style={styles.gradient}
-      >
-        <View style={styles.container}>
-          <Image style={styles.image} source={{ uri: "https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/feature/myspace/my_space_login_in.png" }} />
-          <Text style={styles.text}>Login to Disney+ Hotstar</Text>
-          <Text style={styles.desc}>Start Watching from where you left off, personalize for kids and more</Text>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.btnText}>Log In</Text>
-          </TouchableOpacity>
-          <View style={styles.bottomContent}>
-            <Text style={styles.desc}>Having Trouble logging in?</Text>
-            <Text>Get Help</Text>
-          </View>
-        </View>
-      </LinearGradient>
-    </>
-  );
-};
+export default function Movies() {
+    const [movies, setMovies] = useState([]);
+    const navigation = useNavigation();
 
-export default MySpace;
+    useEffect(() => {
+        const fetchData = async () => {
+            const moviesData = await fetchMovies("comedy");
+            setMovies(moviesData);
+        };
+        fetchData();
+    }, []);
+
+    const navigateToMovieDetail = (movie) => {
+        navigation.navigate('MovieDetail', { movie });
+    };
+
+    const removeImage = (id) => {
+        setMovies(prevMovies => prevMovies.filter(movie => movie.id !== id));
+    };
+
+    const { width } = Dimensions.get('window');
+    const largeImageHeight = 300; // Height for images
+
+    return (
+        <ScrollView contentContainerStyle={styles.container}>
+            {movies.slice(0, 8).map((data) => (
+                <View key={data.id} style={styles.movieItem}>
+                    <TouchableOpacity onPress={() => navigateToMovieDetail(data)}>
+                        <Image
+                            style={[styles.image, { width: width, height: largeImageHeight }]}
+                            source={{ uri: data.posterURL }}
+                            onError={() => removeImage(data.id)}
+                        />
+                    </TouchableOpacity>
+                    <Button
+                        title="View Details"
+                        onPress={() => navigateToMovieDetail(data)}
+                    />
+                </View>
+            ))}
+        </ScrollView>
+    );
+}
 
 const styles = StyleSheet.create({
-  gradient: {
-    flex: 1,
-  },
-  container: {
-    height: '100%',
-    alignItems: 'center',
-  },
-  image: {
-    height: 200,
-    width: 200,
-    resizeMode: 'contain',
-  },
-  text: {
-    color: 'white',
-    fontFamily: 'Inter-Bold',
-    fontSize: 20,
-    marginTop: 20,
-  },
-  desc: {
-    color: 'gray',
-    textAlign: 'center',
-  },
-  button: {
-    backgroundColor: 'blue',
-    padding: 9,
-    width: '40%',
-    borderRadius: 10,
-    marginTop: 20,
-  },
-  btnText: {
-    alignSelf: 'center',
-    fontFamily: 'Inter-Bold',
-    color: 'white',
-  },
-  bottomContent: {
-    marginTop: 20,
-    alignItems: 'center',
-  },
+    container: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: 10,
+    },
+    movieItem: {
+        marginBottom: 20,
+        width: '100%',
+        alignItems: 'center',
+    },
+    image: {
+        resizeMode: 'cover',
+    }
 });
