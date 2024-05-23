@@ -112,6 +112,10 @@ export default function Movies() {
         navigation.navigate('MovieDetail', { movie }); 
     };
 
+    const removeImage = (id) => {
+        setMovies(prevMovies => prevMovies.filter(movie => movie.id !== id));
+    };
+
     return (
         <View style={styles.container}>
             <ScrollView horizontal={true}>
@@ -120,6 +124,7 @@ export default function Movies() {
                         <Image
                             style={styles.image}
                             source={{ uri: data.posterURL }}
+                            onError={() => removeImage(data.id)}
                         />
                     </TouchableOpacity>
                 ))}
@@ -133,13 +138,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     movieItem: {
-        margin: 10,
+        margin: 4,
         width: 150,
     },
     image: {
         width: '100%',
         height: 200,
         resizeMode: 'cover',
+        borderRadius:4
     },
 });
 

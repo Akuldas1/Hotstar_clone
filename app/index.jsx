@@ -130,7 +130,7 @@ import MovieDetail from './screens/MovieDetail';
 import Search from './screens/Search';
 import Downloads from './screens/Downloads'
 import Myspace from './screens/MySpace'
-import { AntDesign, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons'; // Import the icons you want to use
+import { AntDesign, Entypo, FontAwesome, MaterialIcons, Octicons } from '@expo/vector-icons'; // Import the icons you want to use
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -185,7 +185,7 @@ export default function App() {
           component={Downloads}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <AntDesign name="download" size={size} color={color} />
+              <Octicons name="download" size={size} color={color} />
             ),
           }}
         />

@@ -86,14 +86,21 @@ export default function Moviess() {
         navigation.navigate('MovieDetail', { movie }); 
     };
 
+
+    const removeImage = (id) => {
+        setMovies(prevMovies => prevMovies.filter(movie => movie.id !== id));
+    };
+
+
     return (
         <View style={styles.container}>
          
-                {movies.map((data) => (
-                    <TouchableOpacity key={data.id} style={styles.movieItem} onPress={() => navigateToMovieDetail(data)}>
+                {movies.map((data, index) => (
+                    <TouchableOpacity key={data.id} style={[styles.movieItem, { width: index === 0 || index === 1 ? 100 : 400 },{ height: index === 0 || index === 4 ? 100 : 300 }]} onPress={() => navigateToMovieDetail(data)}>
                         <Image
                             style={styles.image}
                             source={{ uri: data.posterURL }}
+                            onError={() => removeImage(data.id)}
                         />
                     </TouchableOpacity>
                 ))}
@@ -104,18 +111,18 @@ export default function Moviess() {
 
 const styles = StyleSheet.create({
     container: {
+        flex:1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'space-around',
+        // justifyContent: 'space-around',
     },
     movieItem: {
-     
-        width: 150,
+        width: 100,
     },
     image: {
         width: '100%',
-        height: 200,
-        resizeMode: 'cover',
+        height: 300,
+
     }
 });
  
