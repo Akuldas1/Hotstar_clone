@@ -1,19 +1,3 @@
-// import { StyleSheet, Text, View, Button } from 'react-native'
-// import React from 'react'
-
-// const MovieDetail = ({ navigation }) => {
-//   return (
-//     <View>
-//       <Text>MovieDetail</Text>
-//       <Button title="Go back" onPress={() => navigation.goBack()} />
-//     </View>
-//   )
-// }
-
-// export default MovieDetail
-
-// const styles = StyleSheet.create({})
-
 import React from "react";
 import {
   View,
@@ -32,7 +16,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Movies from "../components/Movies";
 
 export default function MovieDetail({ route, navigation }) {
-  const { movie } = route.params; // Get movie data from route params
+  const { movie } = route.params; 
 
   return (
     <>
