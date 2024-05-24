@@ -1,69 +1,3 @@
-// import {
-//     SafeAreaView,
-//     View,
-//     Text,
-//     StyleSheet,
-//     Image,
-//     Button,
-// } from "react-native";
-// import Movies from "../components/movies";
-
-// export default function Home() {
-//     return (
-//         <>
-//             <Image
-//                 style={styles.image}
-//                 source={{
-//                     uri: "https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/9660/1707127799660-i",
-//                 }}
-//             />
-
-//             {/* <Image
-//                 style={styles.title}
-//                 source={{
-//                     uri: "https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/7776/1707127807776-t",
-//                 }}
-//             /> */}
-//             <View style={styles.home}>
-//                 <View style={styles.content}>
-//                     <Button style={styles.button} title="Watch now" />
-//                     <Button style={styles.button} title="+" />
-//                 </View>
-//             </View>
-//             <Movies/>
-//         </>
-//     );
-// }
-
-// const styles = StyleSheet.create({
-
-//     image: {
-//         flex: 0.4,
-//     },
-
-//     title: {
-//        flex:0.1,
-//        bottom:70,
-//        objectFit:"contain"
-//     },
-
-//     home: {
-//         flexDirection: "column",
-//         justifyContent:"flex-start"
-//     },
-
-//     content: {
-//         flexDirection: "row",
-//         gap: 8,
-//         justifyContent: "center",
-//     },
-
-//     button: {
-//         width: "10",
-//     },
-
-// });
-
 import React from "react";
 import {
   View,
@@ -75,12 +9,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import Movies from "../components/movies";
+import Movies from "../components/Movies";
+import Movie from "../components/Movie";
 import SubButton from "../components/Button";
-import Disney from "../components/disney";
+import Disney from "../components/Disney";
 import Carousel from "../components/Carousel";
 import Languages from "../components/Languages";
-import Genres from "../components/genres";
+import Genres from "../components/Genres";
 
 export default function Home({ navigation }) {
   return (
@@ -134,8 +69,6 @@ export default function Home({ navigation }) {
               >
                 <Text className="text-white">+</Text>
               </TouchableOpacity>
-              {/* <Button style={styles.button} title="Watch now" />
-                            <Button style={styles.button} title="+" /> */}
             </View>
           </View>
           <View></View>
@@ -150,6 +83,17 @@ export default function Home({ navigation }) {
               Latest Releases
             </Text>
             <Movies />
+            <Text
+              className="text-white mt-5"
+              style={{
+                fontFamily: "Inter-Bold",
+                fontSize: 20,
+              }}
+            >
+             Newly Added
+            </Text>
+            <Movie/>
+            <Disney />
             <Text
               className="text-white mt-5"
               style={{
@@ -169,16 +113,8 @@ export default function Home({ navigation }) {
             >
               Popular Genres
             </Text>
-            <Genres />
-            <Movies />
-            <Disney />
-            <Movies />
-            {/* <Carousel2/> */}
+            <Genres />   
           </View>
-          {/* <Button title='Detailed' className="bg-red-400 text-black"  onPress={() => navigation.navigate('MovieDetail',{
-                         Movie: 1,
-                         MovieName: 'Movie',
-                    })}/> */}
         </View>
       </ScrollView>
     </>

@@ -1,64 +1,65 @@
-import React, { useState, useEffect } from 'react';
-import { ScrollView, View, StyleSheet, Image, TouchableOpacity, Dimensions, Button } from "react-native";
-import { useNavigation } from '@react-navigation/native';
-import { fetchMovies } from '../api/fetchMovies';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
+import React from "react";
 
-export default function Movies() {
-    const [movies, setMovies] = useState([]);
-    const navigation = useNavigation();
+const Downloads = () => {
+  return (
+    <View style={styles.container}>
+      <Image
+        style={styles.image}
+        source={{
+          uri: "https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/feature/myspace/my_space_login_in.png",
+        }}
+      />
+      <Text style={styles.download}>Login to Disney+ Hotstar</Text>
+      <Text style={styles.desc}>
+        Start Watching Where you left off, personalise for kids and more
+      </Text>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.btnText}>Login</Text>
+      </TouchableOpacity>
+      <Text style={styles.desc}>Having Trouble logging in?</Text>
+    </View>
+  );
+};
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const moviesData = await fetchMovies("comedy");
-            setMovies(moviesData);
-        };
-        fetchData();
-    }, []);
-
-    const navigateToMovieDetail = (movie) => {
-        navigation.navigate('MovieDetail', { movie });
-    };
-
-    const removeImage = (id) => {
-        setMovies(prevMovies => prevMovies.filter(movie => movie.id !== id));
-    };
-
-    const { width } = Dimensions.get('window');
-    const largeImageHeight = 300; // Height for images
-
-    return (
-        <ScrollView contentContainerStyle={styles.container}>
-            {movies.slice(0, 8).map((data) => (
-                <View key={data.id} style={styles.movieItem}>
-                    <TouchableOpacity onPress={() => navigateToMovieDetail(data)}>
-                        <Image
-                            style={[styles.image, { width: width, height: largeImageHeight }]}
-                            source={{ uri: data.posterURL }}
-                            onError={() => removeImage(data.id)}
-                        />
-                    </TouchableOpacity>
-                    <Button
-                        title="View Details"
-                        onPress={() => navigateToMovieDetail(data)}
-                    />
-                </View>
-            ))}
-        </ScrollView>
-    );
-}
+export default Downloads;
 
 const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: 10,
-    },
-    movieItem: {
-        marginBottom: 20,
-        width: '100%',
-        alignItems: 'center',
-    },
-    image: {
-        resizeMode: 'cover',
-    }
+  container: {
+    backgroundColor: "black",
+    height: "100%",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 8,
+  },
+
+  image: {
+    resizeMode: "contain",
+    height: 200,
+    width: 200,
+  },
+
+  download: {
+    color: "white",
+    fontFamily: "Inter-Bold",
+    fontSize: 20,
+  },
+
+  desc: {
+    color: "gray",
+    textAlign: "center",
+  },
+
+  button: {
+    backgroundColor: "blue",
+    padding: 9,
+    width: "40%",
+    borderRadius: 10,
+  },
+
+  btnText: {
+    alignSelf: "center",
+    fontFamily: "Inter-Bold",
+  },
 });

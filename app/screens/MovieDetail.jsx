@@ -29,7 +29,7 @@ import { Fontisto } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
 import Entypo from "@expo/vector-icons/Entypo";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Movies from "../components/movies";
+import Movies from "../components/Movies";
 
 export default function MovieDetail({ route, navigation }) {
   const { movie } = route.params; // Get movie data from route params
@@ -145,7 +145,11 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Bold",
   },
 });
+
+
+
+
 {
   /* <Button title="Go back" onPress={() => navigation.goBack()} /> */
 }
-// style={{fontFamily:"Inter-Regular"}}
+

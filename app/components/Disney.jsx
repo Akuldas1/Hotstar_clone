@@ -31,10 +31,10 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     gap:3,
-    marginBottom: 5, // Adjust spacing between rows as needed
+    marginBottom: 5, 
   },
   image: {
     height: 70,
-    width:"33.3%" // Each image takes up 50% of the width of the row
+    width:"33.3%" 
   },
 })

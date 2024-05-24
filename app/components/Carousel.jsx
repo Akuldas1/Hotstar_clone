@@ -4,7 +4,6 @@ import Swiper from "react-native-swiper";
 import { LinearGradient } from "expo-linear-gradient"; 
 import Entypo from "@expo/vector-icons/Entypo";
 
-// showsButtons={true}
 const Carousel = () => {
   return (
     <Swiper

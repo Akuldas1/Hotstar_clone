@@ -1,115 +1,23 @@
-// import React from 'react'
-// import {
-//     View,
-//     StyleSheet,
-//     Image,
-// } from "react-native";
-// import { fetchMovies } from '../api/fetchMovies'
-// import { useState, useEffect } from 'react'
-
-
-// export default function Movies() {
-//     const [movies, setMovies] = useState([])
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             const movies = fetchMovies("horror")
-//             setMovies(movies)
-//         }
-//         fetchData();
-//     })
-
-//     return (
-//         <>
-//             <View>
-//                 {
-//                     movies.map((data) => {
-//                         <View key={data.id} style={styles.image}>
-//                         <Image source={data.posterURL}/>
-//                         </View>
-//                     })
-//                 }
-//             </View>
-//         </>
-//     )
-// }
-
-// const styles= StyleSheet.create({
-//     image:{
-//         flex:0.5
-//     }
-// })
-
-
-// import React, { useState, useEffect } from 'react';
-// import { ScrollView, View, StyleSheet, Image, Text } from "react-native";
-// import { fetchMovies } from '../api/fetchMovies';
-
-// export default function Movies() {
-//     const [movies, setMovies] = useState([]);
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             const moviesData = await fetchMovies("horror");
-//             console.log(moviesData); // Log fetched data
-//             setMovies(moviesData);
-//         };
-//         fetchData();
-//     }, []);
-
-//     return (
-
-//         <View style={styles.container}>
-
-//             <ScrollView horizontal={true}>
-//                 {movies.map((data) => (
-//                     <View key={data.id} style={styles.movieItem}>
-//                         <Image
-//                             style={styles.image}
-//                             source={{ uri: data.posterURL }}
-//                         />
-//                     </View>
-//                 ))}
-//             </ScrollView>
-//         </View>
-//     );
-// }
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flexDirection: 'row',
-//     },
-//     movieItem: {
-//         margin: 10,
-//         width: 150,
-//     },
-//     image: {
-//         width: '100%',
-//         height: 200,
-//         resizeMode: 'cover',
-//     },
-
-// });
-
 import React, { useState, useEffect } from 'react';
-import { ScrollView, View, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
+import { ScrollView, View, StyleSheet, Image, TouchableOpacity, Text } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import { fetchMovies } from '../api/fetchMovies';
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function Movies() {
     const [movies, setMovies] = useState([]);
-    const navigation = useNavigation(); // Get navigation object
+    const navigation = useNavigation();
 
     useEffect(() => {
         const fetchData = async () => {
-            const moviesData = await fetchMovies("horror");
+            const moviesData = await fetchMovies("western");
             setMovies(moviesData);
         };
         fetchData();
     }, []);
 
     const navigateToMovieDetail = (movie) => {
-        navigation.navigate('MovieDetail', { movie }); 
+        navigation.navigate('MovieDetail', { movie });
     };
 
     const removeImage = (id) => {
@@ -117,27 +25,47 @@ export default function Movies() {
     };
 
     return (
-        <View style={styles.container}>
-          
-                {movies.slice(0,8).map((data) => (
-                    <View>
-                    <TouchableOpacity key={data.id} style={styles.movieItem} onPress={() => navigateToMovieDetail(data)}>
-                        <Image
-                            style={styles.image}
-                            source={{ uri: data.posterURL }}
-                            onError={() => removeImage(data.id)}
-                        />
-                    </TouchableOpacity>
+        <ScrollView>
+            <View style={styles.container}>
+                {movies.slice(0, 8).map((data) => (
+                    <View style={{ backgroundColor: "gray" }}>
+                        <TouchableOpacity key={data.id} style={styles.movieItem}>
+                            <Image
+                                style={styles.image}
+                                source={{ uri: data.posterURL }}
+                                onError={() => removeImage(data.id)}
+                            />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={{
+                                flexDirection: "row",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                gap: 8,
+                                padding: 10,
+                            }}
+                            className="bg-white rounded"
+                            onPress={() => navigateToMovieDetail(data)}
+                        >
+
+                            <FontAwesome name="play" size={11} color="black" />
+                            <Text className="text-black" style={{ fontFamily: "Inter-Bold" }}>
+                                Watch now
+                            </Text>
+                        </TouchableOpacity>
                     </View>
                 ))}
-        </View>
+            </View>
+        </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
-
+        gap: 40,
+        backgroundColor: "black"
     },
     movieItem: {
         margin: 4,
@@ -146,7 +74,15 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: 200,
-        borderRadius:4
+        borderRadius: 4
+    },
+    title: {
+        // fontSize: 20,
+        // fontWeight: 'bold',
+        marginTop: 10,
+        alignSelf: "center",
+        color: "white",
+        fontFamily: "Inter-Bold",
     },
 });
 

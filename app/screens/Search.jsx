@@ -1,21 +1,12 @@
-import React, { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
-import Movies from '../components/movies';
-import Movies2 from '../components/movies2';
+import Movies2 from '../components/SearchMovies';
 
 const Search = () => {
-  // const [text, setText] = useState('');
-
-  // const onChangeText = (inputText) => {
-  //   setText(inputText);
-  // };
-
+ 
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        // onChangeText={onChangeText}
-        // value={text}
         placeholder="Movies, shows and more"
       />
       <View>

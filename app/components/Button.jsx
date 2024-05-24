@@ -1,8 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const SubButton = ({ onPress, title }) => (
-  <TouchableOpacity style={styles.button} onPress={onPress}>
+const SubButton = () => (
+  <TouchableOpacity style={styles.button}>
     <Text style={styles.text}>Subscribe</Text>
   </TouchableOpacity>
 );
