@@ -77,7 +77,7 @@ export default function App() {
             tabBarIcon: ({ color, size }) => (
               <Octicons name="download" size={size} color={color} />
             ),
-          }}
+          }} 
         />
         <Tab.Screen
           name="MySpace"
