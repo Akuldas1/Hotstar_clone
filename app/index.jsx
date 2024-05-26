@@ -521,7 +521,7 @@ const MainTabs = () => {
       />
        <Tab.Screen
         name="My space"
-        component={Downloads}
+        component={Myspace}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Entypo name="user" size={size} color={color} />

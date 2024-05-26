@@ -38,7 +38,7 @@ export default function MovieDetail({ route, navigation }) {
       <View style={{ flexDirection: 'column', gap: 5 }}>
         <Image style={styles.image} source={{ uri: movie.posterURL }} className="rounded-xl" />
         <TouchableOpacity onPress={toggleFavorite} className="fav">
-          <AntDesign name="heart" size={24} color={favorite ? 'red' : 'yellow'} />
+          <AntDesign name="heart" size={24} color={favorite ? 'yellow' : 'gray'} style={styles.favicon} />
         </TouchableOpacity>
         <Text style={styles.title}>{movie.title}</Text>
         <Text className="text-gray-400" style={{ fontFamily: 'Inter-Bold', alignSelf: 'center' }}>
@@ -99,6 +99,11 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 200,
+  },
+  favicon:{
+    position:"absolute",
+    bottom:170,
+    left:10
   },
   title: {
     marginTop: 10,

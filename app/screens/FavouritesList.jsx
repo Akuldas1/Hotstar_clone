@@ -1,20 +1,30 @@
 import React, { useContext } from 'react';
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
-import { FavoritesContext } from '../components/FavoritesContext'; // Adjust the import path
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { FavoritesContext } from '../components/FavoritesContext';
 
 const FavoritesList = () => {
-  const { favorites } = useContext(FavoritesContext);
+  const { favorites, removeFromFavorites } = useContext(FavoritesContext);
+
+  const renderFavoriteIcon = (movie) => {
+    return (
+      <TouchableOpacity onPress={() => removeFromFavorites(movie)} style={styles.favoriteIcon}>
+        <AntDesign name="heart" size={24} color="yellow" />
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Favorites</Text>
       <FlatList
+        horizontal
         data={favorites}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.movieItem}>
             <Image source={{ uri: item.posterURL }} style={styles.image} />
-            <Text style={styles.movieTitle}>{item.title}</Text>
+            {renderFavoriteIcon(item)}
           </View>
         )}
       />
@@ -34,17 +44,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Bold',
   },
   movieItem: {
-    flexDirection: 'row',
-    marginVertical: 10,
-  },
-  image: {
-    width: 50,
-    height: 75,
     marginRight: 10,
   },
-  movieTitle: {
-    color: 'white',
-    alignSelf: 'center',
+  image: {
+    width: 150,
+    height: 200,
+    borderRadius: 10,
+  },
+  favoriteIcon: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    zIndex: 1,
   },
 });
 
