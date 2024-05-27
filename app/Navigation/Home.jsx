@@ -12,7 +12,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import Movies from "../components/Movies";
 import Movie from "../components/Movie";
 import SubButton from "../components/Button";
-import Disney from "../components/Disney";
+import Universe from "../components/Universe";
 import Carousel from "../components/Carousel";
 import Languages from "../components/Languages";
 import Genres from "../components/Genres";
@@ -93,7 +93,7 @@ export default function Home({ navigation }) {
              Newly Added
             </Text>
             <Movie/>
-            <Disney />
+            <Universe />
             <Text
               className="text-white mt-5"
               style={{

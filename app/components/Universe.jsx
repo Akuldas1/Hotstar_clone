@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 
-const Disney = () => {
+const Universe = () => {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -20,7 +20,7 @@ const Disney = () => {
   )
 }
 
-export default Disney
+export default Universe
 
 const styles = StyleSheet.create({
   container: {

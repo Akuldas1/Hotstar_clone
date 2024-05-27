@@ -65,7 +65,7 @@
 import React, { useContext } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { FavoritesContext } from '../components/FavoritesContext';
+import { FavoritesContext } from '../components/FavouritesContext/FavoritesContext';
 import { useNavigation } from '@react-navigation/native';
 
 const FavoritesList = () => {

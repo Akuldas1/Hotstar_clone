@@ -3,17 +3,17 @@ import { ScrollView, View, StyleSheet, Image, TouchableOpacity, Dimensions } fro
 import { useNavigation } from '@react-navigation/native';
 import { fetchMovies } from '../api/fetchMovies';
 
-export default function SearchMovies({ query }) {
+export default function SearchMovies({ query, genre }) {
   const [movies, setMovies] = useState([]);
   const navigation = useNavigation();
 
   useEffect(() => {
     const fetchData = async () => {
-      const moviesData = await fetchMovies("comedy");
+      const moviesData = await fetchMovies(genre);
       setMovies(moviesData);
     };
     fetchData();
-  }, []);
+  }, [genre]);
 
   const filteredMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(query.toLowerCase())
