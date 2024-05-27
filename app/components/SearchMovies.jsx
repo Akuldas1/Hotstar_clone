@@ -3,7 +3,7 @@ import { ScrollView, View, StyleSheet, Image, TouchableOpacity, Dimensions } fro
 import { useNavigation } from '@react-navigation/native';
 import { fetchMovies } from '../api/fetchMovies';
 
-export default function Movies({ query }) {
+export default function SearchMovies({ query }) {
   const [movies, setMovies] = useState([]);
   const navigation = useNavigation();
 

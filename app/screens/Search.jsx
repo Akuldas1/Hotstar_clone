@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
-import Movies from '../components/SearchMovies';
+
+import SearchMovies from '../components/SearchMovies';
+import Movies from '../components/Movies';
 
 const Search = () => {
   const [query, setQuery] = useState('');
@@ -14,6 +16,7 @@ const Search = () => {
         onChangeText={setQuery}
       />
       <View>
+        <SearchMovies query={query} />
         <Movies query={query} />
       </View>
     </View>
@@ -37,3 +40,4 @@ const styles = StyleSheet.create({
 });
 
 export default Search;
+

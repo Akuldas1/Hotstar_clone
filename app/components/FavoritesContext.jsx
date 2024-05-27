@@ -6,7 +6,6 @@ export const FavoritesContext = createContext();
 export const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
 
-  // Load favorites from AsyncStorage on component mount
   useEffect(() => {
     const loadFavorites = async () => {
       try {
@@ -22,7 +21,6 @@ export const FavoritesProvider = ({ children }) => {
     loadFavorites();
   }, []);
 
-  // Save favorites to AsyncStorage whenever favorites change
   useEffect(() => {
     const saveFavorites = async () => {
       try {
