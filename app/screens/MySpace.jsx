@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import React from "react";
 
-const Downloads = () => {
+const MySpace = () => {
   return (
     <View style={styles.container}>
       <Image
@@ -22,7 +22,7 @@ const Downloads = () => {
   );
 };
 
-export default Downloads;
+export default MySpace;
 
 const styles = StyleSheet.create({
   container: {

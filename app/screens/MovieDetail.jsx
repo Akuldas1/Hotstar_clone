@@ -14,7 +14,7 @@ import { Octicons } from "@expo/vector-icons";
 import Entypo from "@expo/vector-icons/Entypo";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Movies from "../components/Movies";
-import { useFavorites } from "../components/FavouritesContext/FavoritesContext";
+import { useFavorites } from "../FavouritesContext/FavoritesContext";
 import Toast from "react-native-toast-message";
 
 export default function MovieDetail({ route, navigation }) {

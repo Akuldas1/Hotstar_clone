@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import SearchMovies from "../components/SearchMovies";
+
 const Search = () => {
   const [query, setQuery] = useState("");
 
